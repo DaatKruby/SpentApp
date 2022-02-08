@@ -9,7 +9,7 @@ const windowWidth = Dimensions.get('window').width;
 const Spentform = () => {
     return (
         <View>
-            <SpentInput />
+            <SpentInput kbType='numbers-and-punctuation' placeHolder='Cantidad' />
         </View>
     );
 }

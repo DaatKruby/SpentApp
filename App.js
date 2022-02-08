@@ -9,13 +9,19 @@ import Addspent from './screens/AddSpent';
 
 const Stack = createStackNavigator();
 
+function StackScreens(){
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}} >
+    <Stack.Screen name="landing" component={TimelineSpent} />
+    <Stack.Screen name="addSpent" component={Addspent} />
+    </Stack.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}} >
-        <Stack.Screen name="landing" component={TimelineSpent} />
-        <Stack.Screen name="addSpent" component={Addspent} />
-        </Stack.Navigator>
+      <StackScreens/>
     </NavigationContainer>
   );
 }

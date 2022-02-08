@@ -4,14 +4,16 @@ import { View, StyleSheet, Text, TextInput, Dimensions } from 'react-native';
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const SpentInput = () => {
+const SpentInput = ({ placeHolder, kbType }) => {
     return (
         <View>
-            <TextInput
-                style={styles.input}
-                placeholder='  Cantidad'
-                keyboardType={'numbers-and-punctuation'}
-            />
+            <View>
+                <TextInput
+                    style={styles.input}
+                    placeholder={placeHolder}
+                    keyboardType={kbType}
+                />
+            </View>
         </View>
     );
 }
