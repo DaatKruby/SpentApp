@@ -1,17 +1,27 @@
 import React from 'react';
-import { SafeAreaView, View, Text, StyleSheet } from 'react-native';
+import { SafeAreaView, Text, View, TextInput, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 
 import Spentform from '../components/SpentForm';
 
 const Addspent = () => {
     return (
         <SafeAreaView>
-            <View style={styles.containerTitle}>
-                <Text style={styles.textTitle}>Cantidad gastada:</Text>
-            </View>
-            <View style={styles.containerForm}>
-                <Spentform />
-            </View>
+            <ScrollView>
+                <View>
+                    <TextInput style={styles.input} placeholder="Cantidad" />
+                </View>
+                <View>
+                    <TextInput style={styles.input} placeholder="Categoria" />
+                </View>
+                <View>
+                    <TextInput style={styles.input} placeholder="Cantidad" />
+                </View>
+                <View>
+                    <TouchableOpacity>
+                        <Text>Guardar</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -24,6 +34,12 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         flex: 1,
         alignItems: 'center'
+    },
+    input: {
+        marginTop: 5,
+        height: 40,
+        borderColor: 'black',
+        borderWidth: .5
     },
     textTitle: {
         fontSize: 15,
