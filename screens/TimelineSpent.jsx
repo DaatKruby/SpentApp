@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, SafeAreaView, StyleSheet, TouchableOpacity, Touchable } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 import Floatingbutton from '../components/FloatingButton';
 import SpentCard from '../components/SpentCard';
@@ -7,27 +8,36 @@ import SpentCard from '../components/SpentCard';
 const Landingpage = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.containerBody}>
-                <SpentCard amountSpent="200" category="Gasolina" />
-            </View>
-            <View style={styles.containerBody}>
-                <SpentCard amountSpent="200" category="Gasolina" />
-            </View>
-            <View style={styles.containerBody}>
-                <SpentCard amountSpent="200" category="Gasolina" />
-            </View>
-            <View style={styles.containerBody}>
-                <SpentCard amountSpent="200" category="Gasolina" />
-            </View>
-            <View style={styles.containerBody}>
-                <SpentCard amountSpent="200" category="Gasolina" />
-            </View>
-            <View style={styles.containerBody}>
-                <SpentCard amountSpent="200" category="Gasolina" />
-            </View>
-            <View style={styles.containerBody}>
-                <SpentCard amountSpent="200" category="Gasolina" />
-            </View>
+            <ScrollView>
+                <View style={styles.containerBody}>
+                    <SpentCard amountSpent="200" category="Gasolina" date="14/02/2021" />
+                </View>
+                <View style={styles.containerBody}>
+                    <SpentCard amountSpent="200" category="Gasolina" date="14/02/2021" />
+                </View>
+                <View style={styles.containerBody}>
+                    <SpentCard amountSpent="200" category="Gasolina" date="14/02/2021" />
+                </View>
+                <View style={styles.containerBody}>
+                    <SpentCard amountSpent="200" category="Gasolina" date="14/02/2021" />
+                </View>
+                <View style={styles.containerBody}>
+                    <SpentCard amountSpent="200" category="Gasolina" date="14/02/2021" />
+                </View>
+                <View style={styles.containerBody}>
+                    <SpentCard amountSpent="200" category="Gasolina" date="14/02/2021" />
+                </View>
+                <View style={styles.containerBody}>
+                    <SpentCard amountSpent="200" category="Gasolina" date="14/02/2021" />
+                </View>
+                <View style={styles.containerBody}>
+                    <SpentCard amountSpent="200" category="Gasolina" date="14/02/2021" />
+                </View>
+                <View style={styles.containerBody}>
+                    <SpentCard amountSpent="200" category="Gasolina" date="14/02/2021" />
+                </View>
+
+            </ScrollView>
             <View>
                 <Floatingbutton goTo="addSpent" navigation={navigation} />
             </View>

@@ -1,12 +1,10 @@
 import { Text, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { borderColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
-
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-export default function SpentCard({ amountSpent, category }) {
+export default function SpentCard({ amountSpent, category, date }) {
 
     return (
         <TouchableOpacity>
@@ -16,6 +14,9 @@ export default function SpentCard({ amountSpent, category }) {
                 </View>
                 <View style={styles.categoryContainer}>
                     <Text>Gastado en: {category}</Text>
+                </View>
+                <View style={styles.dateContainer}>
+                    <Text>{date}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -32,18 +33,20 @@ const styles = StyleSheet.create({
         width: windowWidth - 20,
     },
     amountContainer: {
-        flex: 1,
-        justifyContent: 'center'
+        flex: 1
+
     },
     categoryContainer: {
-        position: 'absolute',
         flex: 1,
-        paddingLeft: 20,
-        paddingBottom: 10,
+        justifyContent: 'center',
+        paddingLeft: 15,
     },
-
+    dateContainer: {
+        flex: 1,
+        paddingLeft: 15,
+    },
     textSpent: {
-        fontSize: 30,
+        fontSize: 28,
         paddingLeft: 15,
         fontWeight: 'bold',
         alignItems: 'center'
