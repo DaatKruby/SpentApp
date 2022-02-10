@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 function StackScreens(){
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}} >
+    <Stack.Navigator screenOptions={{headerShown: true}} >
     <Stack.Screen name="landing" component={TimelineSpent} />
     <Stack.Screen name="addSpent" component={Addspent} />
     </Stack.Navigator>
