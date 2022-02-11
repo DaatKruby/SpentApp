@@ -1,22 +1,65 @@
-import React from 'react';
-import { SafeAreaView, Text, View, TextInput, StyleSheet, ScrollView, Button } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, TextInput, StyleSheet, ScrollView, Button, Alert } from 'react-native';
 
-import Spentform from '../components/SpentForm';
+import db from '../database/firebase';
+import { collection, addDoc } from "firebase/firestore";
 
-const Addspent = () => {
+const date = new Date();
+
+const todayDate = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
+const Addspent = ({ navigation }) => {
+
+
+    const initialState = {
+        qty: '',
+        category: '',
+        description: '',
+        date: todayDate.toString()
+    };
+
+    const [state, setState] = useState(initialState);
+
+    const handleChangeText = (value, name) => {
+        setState({ ...state, [name]: value });
+    };
+
+    const createNewSpent = async () => {
+        if (state.qty === '' || state.category === '' || state.date === '') Alert.alert("Rellena todos los campos")
+        else {
+            try {
+                const docRef = await addDoc(collection(db, "spent"), {
+                    qty: state.qty,
+                    category: state.category,
+                    description: state.description,
+                    date: state.date
+                });
+                Alert.alert("Guardado");
+                navigation.navigate("landing");
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+
     return (
         <ScrollView style={styles.container}>
             <View>
-                <TextInput style={styles.InputGroup} placeholder="Cantidad" />
+                <TextInput style={styles.InputGroup} placeholder="Cantidad" onChangeText={(value) => handleChangeText(value, 'qty')} value={state.qty} />
             </View>
             <View>
-                <TextInput style={styles.InputGroup} placeholder="Categoria" />
+                <TextInput style={styles.InputGroup} placeholder="Categoria" onChangeText={(value) => handleChangeText(value, 'category')} value={state.category} />
             </View>
             <View>
-                <TextInput style={styles.InputGroup} placeholder="Cantidad" />
+                <TextInput style={styles.InputGroup} placeholder="Descripción" onChangeText={(value) => handleChangeText(value, 'description')} value={state.description} />
+
+            </View>
+            <View>
+                <TextInput style={styles.InputGroup} placeholder="Fecha" onChangeText={(value) => handleChangeText(value, 'date')} value={state.date} />
+
             </View>
             <View style={styles.ButtonContainer}>
-                <Button title="Guardar Gasto" />
+                <Button title="Guardar Gasto" onPress={() => createNewSpent()} />
             </View>
         </ScrollView>
     );

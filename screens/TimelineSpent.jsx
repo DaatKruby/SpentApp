@@ -2,10 +2,24 @@ import React from 'react';
 import { View, Image, SafeAreaView, StyleSheet, TouchableOpacity, Touchable } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
+import { collection, getDocs } from "firebase/firestore";
+import db from '../database/firebase';
+
 import Floatingbutton from '../components/FloatingButton';
 import SpentCard from '../components/SpentCard';
 
+
+const getData = async () => {
+    const querySnapshot = await getDocs(collection(db, "spent"));
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data().category}`);
+    });
+}
+getData();
+
+
 const Landingpage = ({ navigation }) => {
+
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
